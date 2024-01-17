@@ -73,8 +73,8 @@ jobs:
         cc:
           - "clang"
         os:
-          - "macos-11"
-          - "macos-12"
+          - "macos-12
+          - "macos-13"
     steps:
       - uses: actions/checkout@v3
 
