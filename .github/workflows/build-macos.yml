@@ -11,7 +11,7 @@ on:
 jobs:
   build:
     #runs-on: macos-10.15
-    runs-on: macos-12
+    runs-on: macos-11
 
     steps:
       - name: Checkout
@@ -21,7 +21,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-            brew install dylibbundler python-distlib
+            brew install dylibbundler
             brew install yasm nasm pkg-config libass ffmpeg
             brew install libarchive luajit-openresty mujs uchardet
             #brew install luajit --HEAD
@@ -33,7 +33,7 @@ jobs:
       - name: Build
         run: |
             ./bootstrap.py
-            python3 ./waf configure
+            ./waf configure
             ./waf
             #TOOLS/osxbundle.py build/mpv
 
@@ -43,7 +43,7 @@ jobs:
             mkdir -p release
             cp -r build/mpv.app release
             cd release
-            tar -cjf ../mpv-macos-12.tar.bz2 *
+            tar -cjf ../mpv-macos-11.tar.bz2 *
             
       - name: Build package
         run: |
@@ -51,34 +51,34 @@ jobs:
             cp build/mpv package/mpv.app/Contents/MacOS/
             dylibbundler -od -b -x ./package/mpv.app/Contents/MacOS/mpv -d ./package/mpv.app/Contents/MacOS/lib -p @executable_path/lib
             cd package
-            tar -cjf ../mpv-macos-12.tar.bz2 mpv.app/
+            tar -cjf ../mpv-macos-11.tar.bz2 mpv.app/
 
       - name: Build Apple Disk Image
         if: ${{ false }}
         run: |
             brew install create-dmg
-            create-dmg --sandbox-safe --no-internet-enable --volname "mpv" --app-drop-link 200 185 mpv-12.dmg release
+            create-dmg --sandbox-safe --no-internet-enable --volname "mpv" --app-drop-link 200 185 mpv-11.dmg release
 
       - name: Create artifact 1
         #if: ${{ false }}
         uses: actions/upload-artifact@v2
         with:
-          name: mpv-macos-12.tar.bz2
-          path: ./mpv-macos-12.tar.bz2
+          name: mpv-macos-11.tar.bz2
+          path: ./mpv-macos-11.tar.bz2
 
       - name: Create artifact 2
         if: ${{ false }}
         uses: actions/upload-artifact@v2
         with:
-         name: mpv-12.dmg
-         path: ./mpv-12.dmg
+         name: mpv-11.dmg
+         path: ./mpv-11.dmg
 
       - name: Upload package to release
         if: github.event_name == 'release'
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: ./mpv-macos-12.tar.bz2
+          file: ./mpv-macos-11.tar.bz2
           tag: ${{ github.ref }}
           overwrite: true
           file_glob: true
