@@ -21,7 +21,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-            brew install dylibbundler python-distlib
+            brew install dylibbundler python-distlib libpython3-dev
             brew install yasm nasm pkg-config libass ffmpeg
             brew install libarchive luajit-openresty mujs uchardet
             #brew install luajit --HEAD
@@ -33,6 +33,7 @@ jobs:
       - name: Build
         run: |
             ./bootstrap.py
+            python3 ./waf OPTIONS
             ./waf configure
             ./waf
             #TOOLS/osxbundle.py build/mpv
