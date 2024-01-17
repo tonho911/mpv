@@ -21,7 +21,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-            brew install dylibbundler python@3.11.7-distutils
+            brew install dylibbundler python-distlib
             brew install yasm nasm pkg-config libass ffmpeg
             brew install libarchive luajit-openresty mujs uchardet
             #brew install luajit --HEAD
