@@ -253,7 +253,7 @@ cd
 chown vnstat:vnstat /var/lib/vnstat -R
 systemctl enable vnstat
 /etc/init.d/vnstat restart
-rm -f /root/vnstat-2.6.tar.gz 
+rm -f /root/vnstat-2.6.tar.gz
 rm -rf /root/vnstat-2.6
 
 # Swap RAM 1GB
