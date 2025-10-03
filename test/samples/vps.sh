@@ -233,12 +233,12 @@ mkdir -p /etc/autokill/logs
 mkdir -p /etc/autokill/penalty_logs
 mkdir -p /var/lib/marzban/assets
 mkdir -p /var/lib/marzban/core
-wget -O /var/lib/marzban/core/xray "https://github.com/cs-69/crot/raw/refs/heads/main/core/xray"
+wget -O /var/lib/marzban/core/xray "https://raw.githubusercontent.com/cs-69/crot/refs/heads/main/core/xray"
 chmod +x /var/lib/marzban/core/xray
 
 #profile
 echo -e 'profile' >> /root/.profile
-wget -O /usr/bin/profile "https://github.com/cs-69/crot/raw/refs/heads/node/command/profile";
+wget -O /usr/bin/profile "https://raw.githubusercontent.com/cs-69/crot/refs/heads/main/command/profile";
 chmod +x /usr/bin/profile
 apt install neofetch -y
 
@@ -246,7 +246,7 @@ apt install neofetch -y
 apt -y install vnstat
 /etc/init.d/vnstat restart
 apt -y install libsqlite3-dev
-wget "https://github.com/cs-69/crot/raw/refs/heads/node/utilitas/vnstat-2.6.tar.gz"
+wget "https://raw.githubusercontent.com/cs-69/crot/refs/heads/main/utilitas/vnstat-2.6.tar.gz"
 tar zxvf vnstat-2.6.tar.gz
 cd vnstat-2.6
 ./configure --prefix=/usr --sysconfdir=/etc && make && make install 
@@ -279,9 +279,9 @@ cd
 mkdir -p /var/log/nginx
 touch /var/log/nginx/access.log
 touch /var/log/nginx/error.log
-wget -O /opt/marzban/nginx.conf "https://github.com/cs-69/crot/raw/refs/heads/node/config/nginx.conf"
-wget -O /opt/marzban/default.conf "https://github.com/cs-69/crot/raw/refs/heads/node/config/vps.conf"
-wget -O /opt/marzban/xray.conf "https://github.com/cs-69/crot/raw/refs/heads/node/config/xray.conf"
+wget -O /opt/marzban/nginx.conf "https://raw.githubusercontent.com/cs-69/crot/refs/heads/main/config/nginx.conf"
+wget -O /opt/marzban/default.conf "https://raw.githubusercontent.com/cs-69/crot/refs/heads/main/config/vps.conf"
+wget -O /opt/marzban/xray.conf "https://raw.githubusercontent.com/cs-69/crot/refs/heads/main/config/xray.conf"
 mkdir -p /var/www/html
 echo "<pre>Setup by AutoScript tonho dalua</pre>" > /var/www/html/index.html
 
@@ -295,7 +295,7 @@ curl https://get.acme.sh | sh -s email=$email
 /root/.acme.sh/acme.sh --server letsencrypt --register-account -m $email --issue -d $domain --standalone -k ec-256 --debug
 ~/.acme.sh/acme.sh --installcert -d $domain --fullchainpath /var/lib/marzban/xray.crt --keypath /var/lib/marzban/xray.key --ecc
 rm /var/lib/marzban/xray_config.json
-wget -O /var/lib/marzban/xray_config.json "https://github.com/cs-69/crot/raw/refs/heads/node/config/xray_config.json"
+wget -O /var/lib/marzban/xray_config.json "https://raw.githubusercontent.com/cs-69/crot/refs/heads/main/config/xray_config.json"
 
 #install command
 cd /usr/bin
@@ -376,7 +376,7 @@ systemctl enable ufw
 systemctl start ufw
 
 #install database
-wget -O /var/lib/marzban/db.sqlite3 "https://github.com/cs-69/crot/raw/refs/heads/node/utilitas/db.sqlite3"
+wget -O /var/lib/marzban/db.sqlite3 "https://raw.githubusercontent.com/cs-69/crot/refs/heads/main/utilitas/db.sqlite3"
 
 #install warp
 wget -O /root/warp "https://raw.githubusercontent.com/ueu6969/x-ui-scripts/main/install_warp_proxy.sh"
