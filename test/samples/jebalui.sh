@@ -1,6 +1,4 @@
 #!/bin/bash
-apt-get update;
-clear
 apt install ruby -y
 gem install lolcat
 apt install wondershaper -y
@@ -283,7 +281,6 @@ mkdir -p /var/www/html
 echo "<pre>Setup by AutoScript tonho dalua</pre>" > /var/www/html/index.html
 
 #install socat
-apt-get update;
 apt install iptables -y
 apt install curl socat xz-utils wget apt-transport-https gnupg gnupg2 gnupg1 dnsutils lsb-release -y 
 apt install socat cron bash-completion -y
@@ -377,7 +374,6 @@ systemctl start ufw
 wget -O /var/lib/marzban/db.sqlite3 "https://github.com/cs-69/crot/raw/refs/heads/main/utilitas/db.sqlite3"
 
 #install warp
-apt-get update;
 wget -O /root/warp "https://raw.githubusercontent.com/cs-69/crot/refs/heads/main/command/install_warp_proxy.sh"
 sudo chmod +x /root/warp
 sudo bash /root/warp -y
